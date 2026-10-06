@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TradeDesk — deposit quotes for local services</title>
+  <link rel="stylesheet" href="../proposalforge/styles.css" />
+  <style>.quote { font-family: Inter, ui-sans-serif, system-ui, sans-serif; } .big { font-size: 2rem; margin: 8px 0; }</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="../index.html">Revenue Kit</a>
+      <div class="nav-links">
+        <a href="../proposalforge/index.html">ProposalForge</a>
+        <a class="btn" id="payLink" href="#">Set your payment link</a>
+      </div>
+    </nav>
+    <section class="hero">
+      <div>
+        <h1>Get the deposit before you drive.</h1>
+        <p class="lede">Mobile detailers, cleaners, and repair techs lose mornings to no-shows. This page prices the job, sets a deposit, and copies a text the customer can pay from.</p>
+        <p class="fine">Sell this as a $19/month widget to one trade in one city. Replace the payment link with your Stripe or Square link.</p>
+      </div>
+      <form class="panel quote" id="form">
+        <label>Business</label>
+        <input id="biz" value="Harbor Mobile Detail" />
+        <label>Service</label>
+        <select id="service">
+          <option value="189">Exterior wash — $189</option>
+          <option value="349">Full detail — $349</option>
+          <option value="129">Interior reset — $129</option>
+          <option value="79">Add-on: pet hair — $79</option>
+        </select>
+        <label>Customer first name</label>
+        <input id="name" value="Jordan" />
+        <label>Deposit %</label>
+        <input id="dep" type="number" value="40" />
+        <label>Payment link</label>
+        <input id="link" placeholder="https://buy.stripe.com/..." />
+        <p class="big" id="due"></p>
+        <button class="btn" type="button" id="copy">Copy text message</button>
+        <textarea id="sms" style="margin-top:12px"></textarea>
+      </form>
+    </section>
+    <footer>Do not store card numbers here. Send customers to Stripe, Square, or your processor. Deposits and no-show fees must match your local consumer rules.</footer>
+  </div>
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const saved = localStorage.getItem("td_link");
+    if (saved) $("link").value = saved;
+    function render() {
+      const price = Number($("service").value);
+      const dep = Math.min(100, Math.max(0, Number($("dep").value) || 0));
+      const due = Math.round(price * dep / 100);
+      $("due").textContent = "Deposit due: $" + due;
+      const link = $("link").value.trim() || "https://your-payment-link";
+      localStorage.setItem("td_link", $("link").value.trim());
+      $("sms").value = `Hi ${"name" in window ? "" : ""}${$("name").value.trim() || "there"}, ${"biz" && $("biz").value.trim()} can take this job. Total $${price}. To hold the slot, the ${dep}% deposit is $${due}: ${link} — reply once paid and we will confirm the window.`;
+      $("payLink").href = link.startsWith("http") ? link : "#";
+    }
+    ["biz","service","name","dep","link"].forEach((id) => $(id).addEventListener("input", render));
+    $("copy").addEventListener("click", async () => {
+      await navigator.clipboard.writeText($("sms").value);
+      $("copy").textContent = "Copied";
+      setTimeout(() => { $("copy").textContent = "Copy text message"; }, 1200);
+    });
+    render();
+  </script>
+</body>
+</html>

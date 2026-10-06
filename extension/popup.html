@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>ScopeBrief</title>
+  <style>
+    body { width: 340px; margin: 0; font: 14px/1.4 ui-sans-serif, system-ui, sans-serif; color: #14221c; }
+    header, main { padding: 12px 14px; }
+    header { background: #1f6b4a; color: white; }
+    h1 { font-size: 15px; margin: 0; }
+    p { margin: 4px 0 0; opacity: 0.85; font-size: 12px; }
+    textarea { width: 100%; min-height: 160px; box-sizing: border-box; border: 1px solid #e4ebe6; border-radius: 8px; padding: 8px; }
+    button, a.btn { display: inline-block; margin-top: 8px; margin-right: 6px; background: #1f6b4a; color: white; border: 0; border-radius: 999px; padding: 8px 12px; text-decoration: none; cursor: pointer; }
+    .ghost { background: #eef4f0; color: #14221c; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ScopeBrief</h1>
+    <p>Highlight text on a page, then capture a brief.</p>
+  </header>
+  <main>
+    <textarea id="out" placeholder="Captured brief appears here."></textarea>
+    <button id="cap" type="button">Capture page</button>
+    <button id="copy" class="ghost" type="button">Copy</button>
+    <a class="btn" id="upgrade" href="https://github.com/elbowfox/revenue-kit-2026" target="_blank">Pro link</a>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>

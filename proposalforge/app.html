@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ProposalForge app</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <nav class="no-print">
+      <a class="brand" href="index.html">ProposalForge</a>
+      <div class="nav-links">
+        <span id="status" class="meta">Free</span>
+        <button class="btn secondary" id="print" type="button">Print / PDF</button>
+        <a class="btn" id="buy" href="#">Remove watermark</a>
+      </div>
+    </nav>
+    <div class="app-shell">
+      <form class="panel no-print" id="form">
+        <label>License key</label>
+        <div class="row2">
+          <input id="license" placeholder="PF-XXXX" autocomplete="off" />
+          <button class="btn" type="button" id="unlock">Unlock</button>
+        </div>
+        <label>Your name</label>
+        <input id="fromName" value="Alex Rivera" />
+        <label>Your email</label>
+        <input id="fromEmail" value="alex@studio.example" />
+        <label>Client</label>
+        <input id="client" value="Northline Studio" />
+        <label>Project title</label>
+        <input id="title" value="Brand site redesign" />
+        <label>Summary</label>
+        <textarea id="summary">A fixed-scope marketing site: homepage, work, about, and contact. Two rounds of revision. You provide copy and photos.</textarea>
+        <label>Line items (one per line: name | amount)</label>
+        <textarea id="items">Discovery and sitemap | 800
+Design and build | 3400
+Launch support | 600</textarea>
+        <label>Timeline</label>
+        <input id="timeline" value="3 weeks from deposit" />
+        <div class="row2">
+          <div>
+            <label>Deposit %</label>
+            <input id="deposit" type="number" value="50" />
+          </div>
+          <div>
+            <label>Valid for (days)</label>
+            <input id="valid" type="number" value="14" />
+          </div>
+        </div>
+        <label>Terms</label>
+        <textarea id="terms">Work begins after the deposit clears. Unused revision rounds expire at launch. Out-of-scope requests are quoted separately. Either party may stop with written notice; completed work is billed.</textarea>
+      </form>
+      <article class="doc" id="doc">
+        <p class="meta" id="dMeta"></p>
+        <h2 id="dTitle"></h2>
+        <p id="dSummary"></p>
+        <div id="dItems"></div>
+        <div class="total" id="dTotal"></div>
+        <p id="dDeposit"></p>
+        <h3>Timeline</h3>
+        <p id="dTimeline"></p>
+        <h3>Terms</h3>
+        <p id="dTerms"></p>
+        <p class="meta" id="dFrom"></p>
+        <div class="wm" id="wm"></div>
+      </article>
+    </div>
+  </div>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

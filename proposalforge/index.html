@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ProposalForge — proposals freelancers can send today</title>
+  <meta name="description" content="Write a scoped freelance proposal with price, timeline, and terms. Print to PDF. One-time license removes the watermark." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="index.html">ProposalForge</a>
+      <div class="nav-links">
+        <a href="app.html">Open the app</a>
+        <a href="../tradedesk/index.html">TradeDesk</a>
+        <a class="btn" href="app.html">Make a proposal</a>
+      </div>
+    </nav>
+    <section class="hero">
+      <div>
+        <h1>Send a proposal before the call ends.</h1>
+        <p class="lede">A one-screen proposal builder for designers, developers, and consultants. Scope, price, timeline, and terms — then print to PDF. No account required.</p>
+        <div class="cta-row">
+          <a class="btn" href="app.html">Start free</a>
+          <a class="btn secondary" id="buy" href="#">Unlock for $29</a>
+        </div>
+        <p class="fine">Free tier includes a small watermark. A one-time license removes it. Nothing is uploaded.</p>
+      </div>
+      <div class="preview">
+        <p class="meta">Proposal · PF-1042</p>
+        <h3>Brand site for Northline Studio</h3>
+        <p>Fixed scope. Two revision rounds. 3-week delivery.</p>
+        <div class="line-item"><span>Discovery & sitemap</span><span>$800</span></div>
+        <div class="line-item"><span>Design + build</span><span>$3,400</span></div>
+        <div class="line-item"><span>Launch support</span><span>$600</span></div>
+        <div class="total"><span>Total</span><span>$4,800</span></div>
+      </div>
+    </section>
+    <section class="grid">
+      <article class="card"><h3>Who pays</h3><p>Solo freelancers who already send proposals in Google Docs and lose deals to slow follow-up.</p></article>
+      <article class="card"><h3>Why it can charge</h3><p>It sits next to money. A $29 tool that helps close a $3,000 project is an easy buy. Recurring is optional later.</p></article>
+      <article class="card"><h3>What stays local</h3><p>The draft never leaves the browser. That is the privacy pitch, and it means hosting cost stays near zero.</p></article>
+    </section>
+    <footer>Not legal advice. Edit the terms block before you send a proposal to a client. Replace the checkout link in config.js before you charge anyone.</footer>
+  </div>
+  <script src="config.js"></script>
+  <script>
+    document.getElementById("buy").href = window.PF_CONFIG.checkoutUrl;
+  </script>
+</body>
+</html>
