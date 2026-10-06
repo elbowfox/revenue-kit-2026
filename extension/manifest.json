@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "ScopeBrief",
+  "version": "1.0.0",
+  "description": "Turn the current page and your highlight into a client brief you can paste into a proposal.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "ScopeBrief"
+  },
+  "permissions": ["activeTab", "storage", "scripting"],
+  "host_permissions": ["http://*/*", "https://*/*"]
+}
