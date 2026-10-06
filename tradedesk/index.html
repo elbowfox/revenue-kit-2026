@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TradeDesk — deposit quotes for local services</title>
+  <meta name="description" content="Quote a local job, require a deposit, and text the customer a payment link." />
   <link rel="stylesheet" href="../proposalforge/styles.css" />
   <style>.quote { font-family: Inter, ui-sans-serif, system-ui, sans-serif; } .big { font-size: 2rem; margin: 8px 0; }</style>
 </head>
@@ -56,7 +57,9 @@
       $("due").textContent = "Deposit due: $" + due;
       const link = $("link").value.trim() || "https://your-payment-link";
       localStorage.setItem("td_link", $("link").value.trim());
-      $("sms").value = `Hi ${"name" in window ? "" : ""}${$("name").value.trim() || "there"}, ${"biz" && $("biz").value.trim()} can take this job. Total $${price}. To hold the slot, the ${dep}% deposit is $${due}: ${link} — reply once paid and we will confirm the window.`;
+      const name = $("name").value.trim() || "there";
+      const biz = $("biz").value.trim();
+      $("sms").value = "Hi " + name + ", " + biz + " can take this job. Total $" + price + ". To hold the slot, the " + dep + "% deposit is $" + due + ": " + link + " \u2014 reply once paid and we will confirm the window.";
       $("payLink").href = link.startsWith("http") ? link : "#";
     }
     ["biz","service","name","dep","link"].forEach((id) => $(id).addEventListener("input", render));
